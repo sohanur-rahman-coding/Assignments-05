@@ -17,38 +17,80 @@
         @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
     </style>
 </head>
+
 <body>
+
+    <!-- header section  -->
+
     <header>
-        <div class="navbar bg-base-100 shadow-sm">
-  <div class="flex-1">
-    <a class="btn btn-ghost text-xl">daisyUI</a>
-  </div>
-  <div class="flex gap-2">
-    <input type="text" placeholder="Search" class="input input-bordered w-24 md:w-auto" />
-    <div class="dropdown dropdown-end">
-      <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
-        <div class="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        <div class="navbar bg-base-100 shadow-sm flex justify-around gap-60 ">
+            <div class="flex  items-center ">
+                <img class="w-9" src="assets/github-logo.png" alt="">
+                <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
+            </div>
+            <div class="flex gap-2 ">
+                <input type="text" placeholder="🔍 Search issues..." class="input input-bordered w-24 md:w-auto" />
+
+                <div class="btn btn-primary px-4 py-3">
+                    <button> <i class="fa-solid fa-plus"></i> New Issue</button>
+                </div>
+
+
+            </div>
         </div>
-      </div>
-      <ul
-        tabindex="-1"
-        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-        <li>
-          <a class="justify-between">
-            Profile
-            <span class="badge">New</span>
-          </a>
-        </li>
-        <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
     </header>
+
+    <!-- main body  -->
+    <main class="w-8/12 mx-auto">
+
+
+        <!-- category section  -->
+        <div class="cetagory px-8 my-8  shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md space-x-4">
+            <button class="btn px-12     btn-primary">All</button>
+            <button class="btn px-12">Open</button>
+            <button class="btn px-12">Closed</button>
+        </div>
+
+
+        <!-- issues section  -->
+        <div
+            class="issues px-8 flex justify-between items-center shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md">
+            <div class="left flex gap-2">
+                <img class="w-[50px] bg-blue-200 rounded-full p-2" src="assets/Aperture.png" alt="">
+                <div class="">
+                    <h3 id="issues" class="text-[#1F2937] font-semibold text-[20px]">50 Issues</h3>
+                    <p class="text-[#64748B]"> Track and manage your project issues</p>
+                </div>
+            </div>
+            <div class="right flex gap-4">
+                <p class="font-semibold"><i class="fa-solid fa-circle text-green-600 border-none "></i> Open</p>
+                <p class="font-semibold"><i class="fa-solid fa-circle text-purple-500 border-none "></i> close</p>
+            </div>
+
+
+        </div>
+        <hr class="text-gray-300">
+
+
+
+        <!-- issues container  -->
+        <section>
+            <div id="issues-container" class=" grid grid-cols-3 gap-3 bg-[#FBFBFB]">
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </section>
+
+
+    </main>
 
 
 
