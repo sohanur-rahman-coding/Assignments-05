@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Issues Tracer</title>
+    <!-- font awosome cdn  ------------------------------->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- daisy Ui------------------------------------  -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- google font --------------------------------- -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+    </style>
+</head>
+
+<body>
+  <!-- ----------- signup section ---------------  -->
+    <section>
+        <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-[520px] border p-4 mx-auto mt-16">
+            <div class="mx-auto text-center space-y-2">
+                <img class="mx-auto" src="assets/github-logo.png" alt="github-logo">
+                <h2 class="text-[24px] font-semibold">GitHub Issues Tracker</h2>
+                <p>Sign in to manage your issues</p>
+            </div>
+
+            <label class="label font-semibold text-black mt-4">Username</label>
+            <input id="user-id" type="text" class="input w-full" placeholder="Enter Username" value="admin" />
+            <p class="text-[#4A00FF] text-[14px]">default: admin</p>
+            <label class="label font-semibold text-black mt-4" class="label">Password</label>
+            <input id="pass-id" type="password" class="input w-full" placeholder="Enter Password" value="admin123" />
+            <p class="text-[#4A00FF] text-[14px]">default: admin123</p>
+            <button id="signup-btn" class="btn btn-primary rounded-lg mt-4">Sign In</button>
+            <div class="hr flex items-center gap-2 mt-4 mx-auto">
+                <hr class="w-[208px] text-gray-300">
+                <span>OR</span>
+                <hr class="w-[208px] text-gray-300">
+
+            </div>
+            <p class="text-center">Demo Credentials:</p>
+            <div class="demo text-center bg-slate-100 p-6">
+                <p><span class="font-semibold">Username :</span> admin</p>
+                <p><span class="font-semibold">Password :</span> admin123</p>
+            </div>
+        </fieldset>
+
+    </section>
+
+
+
+
+
+    <!-- js file  -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>
