@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Github Issues Tracer</title>
-    <!-- font awosome cdn  ------------------------------->
+    <!-- font awesome cdn  ------------------------------->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -16,6 +16,8 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
     </style>
+    <!-- css file  -->
+     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
@@ -45,20 +47,20 @@
 
 
         <!-- category section  -->
-        <div class="cetagory px-8 my-8  shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md space-x-4">
-            <button class="btn px-12     btn-primary">All</button>
-            <button class="btn px-12">Open</button>
-            <button class="btn px-12">Closed</button>
+        <div class="cetagory px-8  my-8  shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md space-x-4 ">
+            <button onclick="toggleBtn('all-taps')"  id="all-taps" class="btn px-12  border border-gray-200 shadow-none  btn-primary">All</button>
+            <button onclick="toggleBtn('open-tap')" id="open-tap" class="btn px-12 ">Open</button>
+            <button onclick="toggleBtn('close-tap')"  id="close-tap" class="btn px-12">Closed</button>
         </div>
 
 
-        <!-- issues section  -->
+        <!-- issues counter  -->
         <div
             class="issues px-8 flex justify-between items-center shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md">
             <div class="left flex gap-2">
                 <img class="w-[50px] bg-blue-200 rounded-full p-2" src="assets/Aperture.png" alt="">
                 <div class="">
-                    <h3 id="issues" class="text-[#1F2937] font-semibold text-[20px]">50 Issues</h3>
+                    <h3 id="issues-count" class="text-[#1F2937] font-semibold text-[20px]">50 Issues</h3>
                     <p class="text-[#64748B]"> Track and manage your project issues</p>
                 </div>
             </div>
@@ -75,7 +77,7 @@
 
         <!-- issues container  -->
         <section>
-            <div id="issues-container" class=" grid grid-cols-3 gap-3 bg-[#FBFBFB]">
+            <div  id="issues-container" class=" grid grid-cols-1 md:grid-cols-3 gap-3 bg-[#FBFBFB]">
 
 
 
@@ -84,6 +86,26 @@
 
 
             </div>
+
+            <!-- modal  -->
+            <!-- Open the modal using ID.showModal() method -->
+            <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+            <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                <div class="modal-box">
+                    <div id="modal-container">
+                        
+
+
+
+                    </div>
+                    <div class="modal-action">
+                        <form method="dialog">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
 
 
 
@@ -97,7 +119,7 @@
 
 
     <!-- home js file  -->
-    <script src="js/home.js"></script>
+    <script src="./js/home.js"></script>
 </body>
 
 </html>
