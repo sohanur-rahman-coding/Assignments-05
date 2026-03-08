@@ -109,7 +109,7 @@ const showIssues = (arr) => {
                             <p class="line-clamp-2">${element.description}</p>
                         </div>
                         <div class="badge-container">
-                            <span class="">${element.labels.map((el) => `<span class="mt-4 px-2 pb-[2px] rounded-full bg-yellow-100 border border-yellow-300 text-red-500">${el}</span>`).join(" ")}</span>
+                            <span class="flex flex-wrap gap-1">${element.labels.map((el) => `<span class="text-[12px] mt-4 px-2 pb-[2px] rounded-full bg-yellow-100 border border-yellow-300 text-red-500">${el}</span>`).join(" ")}</span>
                         </div>
                         <hr class="text-gray-300 my-4">
                         <p>by ${element.author}</p>
