@@ -25,7 +25,7 @@
     <!-- header section  -->
 
     <header>
-        <div class="navbar bg-base-100 shadow-sm flex justify-around gap-60 ">
+        <div class="navbar bg-base-100 shadow-sm   flex flex-col gap-5  md:flex-row  justify-around md:gap-60 ">
             <div class="flex  items-center ">
                 <img class="w-9" src="assets/github-logo.png" alt="">
                 <a class="btn btn-ghost text-xl">GitHub Issues Tracker</a>
@@ -54,13 +54,17 @@
     </header>
 
     <!-- main body  -->
-    <main class="w-8/12 mx-auto">
+    <main class="w-11/12 md:w-8/12 mx-auto">
 
 
         <!-- category section  -->
-        <div class="cetagory px-8  my-8  shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md space-x-4 ">
-            <button onclick="toggleBtn('all-taps') ; showIssues(allSec)" id="all-taps"
-                class="btn px-12  border border-gray-200 shadow-none  btn-primary">All</button>
+        <div class="cetagory px-8 my-8 
+            flex flex-wrap justify-center md:justify-start
+            gap-4
+            shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] 
+            py-4 rounded-md"">
+            <button onclick=" toggleBtn('all-taps') ; showIssues(allSec)" id="all-taps"
+            class="btn px-12  border border-gray-200 shadow-none  btn-primary">All</button>
             <button onclick="toggleBtn('open-tap') ; showIssues(openSection)" id="open-tap"
                 class="btn px-12 ">Open</button>
             <button onclick="toggleBtn('close-tap') ; showIssues(ClosedSection)" id="close-tap"
@@ -70,12 +74,17 @@
 
         <!-- issues counter  -->
         <div
-            class="issues px-8 flex justify-between items-center shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] py-4  rounded-md">
+            class="issues px-8 
+            flex flex-col md:flex-row 
+            justify-between items-start md:items-center 
+            gap-4
+            shadow-[0_1px_6px_0_rgba(0,0,0,0.08)] 
+            py-4 rounded-md">
             <div class="left flex gap-2">
-                <img class="w-[50px] bg-blue-200 rounded-full p-2" src="assets/Aperture.png" alt="">
+                <img class=" bg-blue-200 rounded-full p-2" src="assets/Aperture.png" alt="">
                 <div class="">
                     <h3 id="issues-count" class="text-[#1F2937] font-semibold text-[20px]">50 Issues</h3>
-                    <p class="text-[#64748b]"> Track and manage your project issues</p>
+                    <p class= "text-[14px] text-[#64748b]"> Track and manage your project issues</p>
                 </div>
             </div>
             <div class="right flex gap-4">
