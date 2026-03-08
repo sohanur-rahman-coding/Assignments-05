@@ -30,13 +30,13 @@ const toggleBtn = (id) => {
     allBtn.classList.remove("active");
     openBtn.classList.remove("active");
     closeBtn.classList.remove("active");
-    
+
 
     const clickedBtn = document.getElementById(id);
 
     clickedBtn.classList.remove("inactive");
     clickedBtn.classList.add("active");
-    
+
 };
 
 // step 1 : feteh all issues
@@ -75,13 +75,13 @@ const displayIssues = (data) => {
 
 const showIssues = (arr) => {
     spinner(true);
-    
-     
+
+
     const issuesContainer = document.getElementById("issues-container");
     issuesContainer.innerHTML = "";
     updateCounter(arr.length);
-        spinner(false);
-    
+    spinner(false);
+
     arr.forEach((element) => {
         let priorityColor = "";
 
@@ -121,10 +121,10 @@ const showIssues = (arr) => {
         
         `;
         issuesContainer.appendChild(div);
-        
+
 
     });
-    
+
 };
 
 // step 3  load issues details when i will be clicked
@@ -162,12 +162,7 @@ const displayIssuesDetails = (detail) => {
     </div>
 
     <div>
-      ${detail.labels
-            .map(
-                (el) =>
-                    `<span class="px-2 py-1 rounded-full bg-yellow-100 border border-yellow-300 text-red-500">${el}</span>`,
-            )
-            .join(" ")}
+        ${detail.labels.map((el) => `<span class="mt-4 px-2 pb-[2px] rounded-full bg-yellow-100 border border-yellow-300 text-red-500">${el}</span>`).join(" ")}    
     </div>
 
     <p class="mt-2 font-semibold">${detail.description}</p>
@@ -198,14 +193,15 @@ loadIssues();
 
 // step 6 search
 document.getElementById("search-btn").addEventListener('click', () => {
-  const input = document.getElementById("input-field");
-  const searchValue = input.value.trim().toLowerCase();
-  // console.log(inputValue);
-  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${title}`)
-    .then(res => res.json())
-    .then(data => {
-      const allWords = data.data;
-      const filterWords = allWords.filter(word => word.word.toLowerCase().includes(searchValue))
-      displayIssuesDetails(filterWords)
-    })
+    const input = document.getElementById("input-field");
+    const searchValue = input.value.trim().toLowerCase();
+    console.log(searchValue);
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+        .then(res => res.json())
+        .then(data => {
+            // console.log(data.data);
+            const allWords = data.data;
+            const filterWords = allWords.filter(word => word.title.toLowerCase().includes(searchValue))
+            showIssues(filterWords)
+        })
 })
