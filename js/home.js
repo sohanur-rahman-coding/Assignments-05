@@ -31,12 +31,10 @@ const toggleBtn = (id) => {
     openBtn.classList.remove("active");
     closeBtn.classList.remove("active");
 
-
     const clickedBtn = document.getElementById(id);
 
     clickedBtn.classList.remove("inactive");
     clickedBtn.classList.add("active");
-
 };
 
 // step 1 : feteh all issues
@@ -47,15 +45,13 @@ const loadIssues = () => {
     fetch(url)
         .then((res) => res.json())
         .then((data) => {
-            displayIssues(data.data)
-            spinner(false)
+            displayIssues(data.data);
+            spinner(false);
         });
-
 };
 
 // displayIssues
 const displayIssues = (data) => {
-
     data.forEach((element) => {
         allSec.push(element);
 
@@ -68,14 +64,12 @@ const displayIssues = (data) => {
     showIssues(allSec);
     toggleBtn("all-taps");
     updateCounter(allSec.length);
-
 };
 
 // step 2 display issues
 
 const showIssues = (arr) => {
     spinner(true);
-
 
     const issuesContainer = document.getElementById("issues-container");
     issuesContainer.innerHTML = "";
@@ -98,33 +92,66 @@ const showIssues = (arr) => {
                 : "border-t-4 border-purple-500";
         const div = document.createElement("div");
         div.innerHTML = `
-                        <div onclick='loadIssuesDetails(${element.id})' class="card ${borderTop} bg-base-100 mt-4 p-6 shadow-sm space-y-3 h-full">
-                    <div class="card space-y-2">
-                        <div class="flex justify-between ">
-                            <span>${element.status == "open" ? `<img src="assets/Open-Status.png" alt="">` : `<img src="assets/Closed- Status .png" alt="">`}</span>
-                            <p class="rounded-xl outline-1 px-2 ${priorityColor}">${element.priority}</p>
-                        </div>
-                        <div class="text-left space-y-2">
-                            <h2 class="font-bold line-clamp-1">${element.title}</h2>
-                            <p class="line-clamp-2">${element.description}</p>
-                        </div>
-                        <div class="badge-container">
-                            <span class="flex flex-wrap gap-1">${element.labels.map((el) => `<span class="text-[12px] mt-4 px-2 pb-[2px] rounded-full bg-yellow-100 border border-yellow-300 text-red-500">${el}</span>`).join(" ")}</span>
-                        </div>
-                        <hr class="text-gray-300 my-4">
-                        <p>by<span class="font-semibold"> ${element.author}</span></p>
-                        <p>${element.createdAt}</p>
-                    </div>
-                </div>
+                       <div onclick='loadIssuesDetails(${element.id})'class="mt-4 bg-white/70 backdrop-blur-md border border-white/40 shadow-md hover:shadow-2xl hover:-translate-y-1 rounded-xl p-5 transition duration-300 cursor-pointer ${borderTop}">
+                       <div class="space-y-3">      
+                       <div class="flex justify-between items-center"> 
+                       <span>
+                       ${element.status == "open"
+                ? `<img class="w-5" src="assets/Open-Status.png">`
+                : `<img class="w-5" src="assets/close-status.png">`
+            }
+                       </span>
+                       <p class="px-3 py-[2px] text-sm font-medium rounded-full ${priorityColor}">
+                        ${element.priority}</p></div>
+                        <div class="text-left space-y-1">
+            <h2 class="font-semibold text-[16px] line-clamp-1 text-gray-800">
+                ${element.title}
+            </h2>
+
+            <p class="text-sm text-gray-500 line-clamp-2">
+                ${element.description}
+            </p>
+        </div>
+
+     
+        <div class="flex flex-wrap gap-2">
+            ${element.labels
+                .map(
+                    (el) => `
+                <span class="text-xs px-2 py-[2px]
+                rounded-full bg-yellow-50
+                border border-yellow-200
+                text-yellow-700">
+                ${el}
+                </span>
+            `,
+                )
+                .join("")}
+        </div>
+
+        <hr class="border-gray-200 my-2">
+
+      
+        <div class="bg-gray-100 text-sm p-3 rounded-lg flex justify-between items-center">
+
+            <p>#${element.id} by 
+            <span class="font-semibold">${element.author}</span></p>
+
+            <p class="text-gray-500 text-xs">
+            ${element.createdAt}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
 
         
         
         `;
         issuesContainer.appendChild(div);
-
-
     });
-
 };
 
 // step 3  load issues details when i will be clicked
@@ -151,7 +178,7 @@ const displayIssuesDetails = (detail) => {
     }
     const modalContainer = document.getElementById("modal-container");
     modalContainer.innerHTML = `
-  <div class="modal-card space-y-3">
+  <div class="modal-card bg-gray-100 p-4 border-3 rounded-xl border-dotted border-blue-300 space-y-3">
 
     <h2 class="font-bold text-xl">${detail.title}</h2>
 
@@ -167,7 +194,7 @@ const displayIssuesDetails = (detail) => {
 
     <p class="mt-2 font-semibold">${detail.description}</p>
 
-    <div class="flex justify-start mt-4 bg-[#F8FAFC] p-6 gap-20 ">
+    <div class="flex justify-start mt-4 bg-white rounded-md p-6 gap-20 ">
 
       <div class="flex flex-col gap-2">
         <p>Assignee:</p>
@@ -192,16 +219,20 @@ const displayIssuesDetails = (detail) => {
 loadIssues();
 
 // step 6 search
-document.getElementById("search-btn").addEventListener('click', () => {
+document.getElementById("search-btn").addEventListener("click", () => {
     const input = document.getElementById("input-field");
     const searchValue = input.value.trim().toLowerCase();
     console.log(searchValue);
-    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
-        .then(res => res.json())
-        .then(data => {
+    fetch(
+        `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`,
+    )
+        .then((res) => res.json())
+        .then((data) => {
             // console.log(data.data);
             const allWords = data.data;
-            const filterWords = allWords.filter(word => word.title.toLowerCase().includes(searchValue))
-            showIssues(filterWords)
-        })
-})
+            const filterWords = allWords.filter((word) =>
+                word.title.toLowerCase().includes(searchValue),
+            );
+            showIssues(filterWords);
+        });
+});
